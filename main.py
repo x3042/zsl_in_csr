@@ -1,5 +1,4 @@
 from utils import NormalizeFea, corrupt, zsl_el
-import scipy
 from scipy import linalg
 import numpy as np
 from scipy.io import loadmat
@@ -34,7 +33,7 @@ for i in range(5):
 
     W = linalg.solve_sylvester(A, B, C)
     V, _, _ = np.linalg.svd(W @ W.T, full_matrices=True)
-    U = np.eye(k) - V[:,:rank+1] @ V[:, :rank+1].T
+    U = np.eye(k) - V[:, :rank+1] @ V[:, :rank+1].T
     A = S @ S.T + beta * U
 
     hitk = 1
@@ -47,4 +46,5 @@ for i in range(5):
 
     X_te_pro = NormalizeFea(S_te_pro, 0) @ NormalizeFea(W)
     zsl_accuracy, _ = zsl_el(X_test, X_te_pro, hitk, testclasses_id, test_labels)
+
     print('ZSL accuracy S >> V', zsl_accuracy * 100)
