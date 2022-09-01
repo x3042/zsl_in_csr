@@ -3,7 +3,7 @@ from scipy import linalg
 import numpy as np
 from scipy.io import loadmat
 
-awa = loadmat('awa_demo_data_v7.mat')
+awa = loadmat('/Users/demitrakill/Downloads/awa_demo_data_v7.mat')
 X_tr = awa['X_tr']
 X_test = awa['X_te']
 S_tr = awa['S_tr']
